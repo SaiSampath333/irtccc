@@ -1,0 +1,121 @@
+/* General container styling */
+.booking-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f5f5f5; /* Light gray background */
+}
+
+/* Header styling */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #003087; /* Indian Railways blue */
+  color: white;
+  padding: 10px 20px;
+}
+
+.nav-links button {
+  margin-right: 10px;
+  background-color: #0052cc; /* Slightly lighter blue for buttons */
+  color: white;
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-text span:first-child {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.slogan {
+  font-size: 0.9rem;
+}
+
+/* Form section styling */
+.form-section {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.form-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #003087; /* Blue for the heading */
+}
+
+/* Station row styling */
+.station-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.station-row mat-form-field {
+  flex: 1;
+}
+
+.swap-icon {
+  font-size: 24px;
+  color: #003087; /* Blue swap icon */
+}
+
+/* Date and class row styling */
+.date-class-row {
+  display: flex;
+  gap: 10px;
+}
+
+.date-class-row mat-form-field {
+  flex: 1;
+}
+
+/* Checkboxes styling */
+.checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+/* Search button styling */
+.search-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-button button {
+  background-color: #ff6200; /* Orange color for the button */
+  color: white;
+}
+
+.easy-booking {
+  background-color: #ff6200; /* Orange background */
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+/* Footer text styling */
+.footer-text {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.footer-text a {
+  color: #003087; /* Blue link */
+  text-decoration: none;
+}
