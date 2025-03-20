@@ -1,81 +1,67 @@
-<div class="booking-container">
-  <!-- Header -->
-  <header class="header">
-    <div class="nav-links">
-      <button mat-raised-button color="primary">PNR STATUS</button>
-      <button mat-raised-button color="primary">CHARTS / VACANCY</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRCTC Booking Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <button class="nav-button">PNR STATUS</button>
+        <button class="nav-button">CHARTS / VACANCY</button>
     </div>
-    <div class="header-text">
-      <span>INDIAN RAILWAYS</span>
-      <span class="slogan">Safety | Security | Punctuality</span>
+
+    <div class="booking-container">
+        <h2>BOOK TICKET</h2>
+        <p class="date-label">DD/MM/YYYY *</p>
+
+        <div class="form-group">
+            <input type="text" placeholder="From" class="input-box">
+            <input type="date" class="input-box">
+        </div>
+
+        <div class="form-group">
+            <input type="text" placeholder="To" class="input-box">
+            <select class="input-box">
+                <option>All Classes</option>
+                <option>General</option>
+                <option>AC 1 Tier</option>
+                <option>Sleeper</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <select class="input-box">
+                <option>GENERAL</option>
+                <option>LADIES</option>
+                <option>SENIOR CITIZEN</option>
+            </select>
+        </div>
+
+        <div class="checkbox-group">
+            <input type="checkbox" id="disability">
+            <label for="disability">Person With Disability Concession</label>
+
+            <input type="checkbox" id="flexible">
+            <label for="flexible">Flexible With Date</label>
+
+            <input type="checkbox" id="berth">
+            <label for="berth">Train with Available Berth</label>
+
+            <input type="checkbox" id="pass">
+            <label for="pass">Railway Pass Concession</label>
+        </div>
+
+        <div class="button-group">
+            <button class="search-button">Search</button>
+            <button class="easy-booking">Easy Booking on AskDISHA</button>
+        </div>
     </div>
-  </header>
 
-  <!-- Form Section -->
-  <div class="form-section">
-    <h2>BOOK TICKET</h2>
-    <form [formGroup]="bookingForm" (ngSubmit)="onSearch()">
-      <!-- From and To Fields -->
-      <div class="station-row">
-        <mat-form-field appearance="outline">
-          <mat-label>From</mat-label>
-          <input matInput formControlName="fromStation" placeholder="Enter starting station">
-          <mat-icon matPrefix>location_on</mat-icon>
-        </mat-form-field>
-
-        <mat-icon class="swap-icon">swap_horiz</mat-icon>
-
-        <mat-form-field appearance="outline">
-          <mat-label>To</mat-label>
-          <input matInput formControlName="toStation" placeholder="Enter destination station">
-          <mat-icon matPrefix>location_on</mat-icon>
-        </mat-form-field>
-      </div>
-
-      <!-- Date and Class Selection -->
-      <div class="date-class-row">
-        <mat-form-field appearance="outline">
-          <mat-label>Travel Date</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="travelDate" (dateInput)="onDateChange($event)">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-label>Class</mat-label>
-          <mat-select formControlName="class">
-            <mat-option *ngFor="let class of classes" [value]="class">{{ class }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-
-      <!-- Quota Selection -->
-      <mat-form-field appearance="outline">
-        <mat-label>Quota</mat-label>
-        <mat-select formControlName="quota">
-          <mat-option *ngFor="let quota of quotas" [value]="quota">{{ quota }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <!-- Checkboxes -->
-      <div class="checkboxes">
-        <mat-checkbox formControlName="personWithDisability">Person With Disability Concession</mat-checkbox>
-        <mat-checkbox formControlName="trainWithAvailableBerth">Train with Available Berth</mat-checkbox>
-        <mat-checkbox formControlName="flexibleWithDate">Flexible With Date</mat-checkbox>
-        <mat-checkbox formControlName="railwayPassConcession">Railway Pass Concession</mat-checkbox>
-      </div>
-
-      <!-- Search Button -->
-      <div class="search-button">
-        <button mat-raised-button color="warn" type="submit">Search</button>
-        <span class="easy-booking">Easy Booking on ASKDISHIA</span>
-      </div>
-    </form>
-
-    <!-- Footer Text -->
-    <p class="footer-text">
-      Customers can use enhanced interface for their IRCTC related queries!!<br>
-      <a href="https://enquiry.irctc.co.in">https://enquiry.irctc.co.in</a>
-    </p>
-  </div>
-</div>
+    <footer>
+        <p>Customers can use enhanced interface for their IRCTC related queries!!</p>
+        <a href="https://enquiry.irctc.co.in">https://enquiry.irctc.co.in</a>
+    </footer>
+</body>
+</html>

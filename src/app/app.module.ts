@@ -1,28 +1,36 @@
-// src/app/app.module.ts
+// app.module.ts
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { TicketBookingComponent } from './ticket-booking/ticket-booking.component';
-import { MatDatepickerModule } from '@angular/material/datepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// Import Angular Material modules
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
-  declarations: [AppComponent, TicketBookingComponent],
+  declarations: [
+    AppComponent,
+    TicketBookingComponent
+  ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule,
-    MatDatepickerModule,
+    BrowserAnimationsModule, // Or NoopAnimationsModule if you disabled animations
+    MatFormFieldModule,
     MatInputModule,
+    MatIconModule,
+    MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
-    BrowserAnimationsModule
+    MatCheckboxModule
   ],
-  bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  providers: [],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

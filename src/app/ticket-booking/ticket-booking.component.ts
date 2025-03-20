@@ -1,33 +1,74 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'; // Import ReactiveFormsModule and FormBuilder
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-ticket-booking',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],  // Ensure required modules are imported
+  imports: [
+    ReactiveFormsModule, // Add this for form handling
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatButtonModule
+  ],
   templateUrl: './ticket-booking.component.html',
+  styleUrls: ['./ticket-booking.component.css']
 })
 export class TicketBookingComponent {
-  ticketForm: FormGroup;
-  stations: string[] = ['Station 1', 'Station 2', 'Station 3']; // Dummy data
-  classes: string[] = ['Economy', 'Business', 'First Class']; // Dummy data
-  categories: string[] = ['Adult', 'Child', 'Senior']; // Dummy data
-  minDate: string = new Date().toISOString().split('T')[0]; // Set today's date as the minimum
+  // Define the bookingForm property
+  bookingForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
-    this.ticketForm = this.fb.group({
-      departureStation: [''],
-      arrivalStation: [''],
-      date: [''],
-      class: [''],
-      category: [''],
+    // Initialize the form with controls
+    this.bookingForm = this.fb.group({
+      from: ['', Validators.required], // Add required validation
+      to: ['', Validators.required],   // Add required validation
+      travelDate: [new Date(2025, 2, 18)], // Default date: 18/03/2025 (months are 0-based in JavaScript)
+      travelClass: ['ALL Classes'],
+      quota: [],
+      disabilityConcession: [false],
+      flexibleDate: [false],
+      availableBerth: [false],
+      railwayPass: [false]
     });
   }
 
-  onSubmit() {
-    console.log('Form submitted:', this.ticketForm.value);
+  // Define the onSearch method for form submission
+  onSearch() {
+    if (this.bookingForm.valid) {
+      console.log('Form submitted:', this.bookingForm.value);
+    } else {
+      console.log('Form is invalid');
+    }
+  }
+
+  // Define the onDateChange method for date input changes
+  onDateChange(event: any) {
+    const selectedDate = event.value;
+    console.log('Selected date:', selectedDate);
+    this.bookingForm.patchValue({ travelDate: selectedDate });
+  }
+
+  // Optional: Add a method to swap 'from' and 'to' fields
+  swapStations() {
+    const from = this.bookingForm.get('from')?.value;
+    const to = this.bookingForm.get('to')?.value;
+    this.bookingForm.patchValue({
+      from: to,
+      to: from
+    });
   }
 }
 
